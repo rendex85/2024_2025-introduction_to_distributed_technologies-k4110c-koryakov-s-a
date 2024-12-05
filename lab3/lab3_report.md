@@ -57,8 +57,8 @@ SSL расшифровывается как Secure Sockets Layer, а TLS (Transp
 ### Создание ConfigMap
 
 Запускаем Minikube с помощью команды `minikube start`. Если не использовать Minikube, контекст может быть задан
-неправильно (например, для `docker-desktop`), и развертывание будет недоступно.Пример манифеста для ConfigMap можно
-найти в [официальной документации](https://kubernetes.io/docs/concepts/configuration/configmap/) :
+неправильно (например, для `docker-desktop`), и развертывание будет недоступно .Пример манифеста для ConfigMap можно
+найти в [официальной документации](https://kubernetes.io/docs/concepts/configuration/configmap/):
 
 ```yaml
 apiVersion: v1
@@ -71,13 +71,13 @@ data:
 ```
 
 Здесь мы сохраняем значения для переменных `REACT_APP_USERNAME` и `REACT_APP_COMPANY_NAME`.Чтобы создать ConfigMap,
-используем команду: `kubectl create -f frontend-configmap.yaml`.Проверяем, что ConfigMap был
+используем команду: `kubectl create -f frontend-configmap.yaml`. Проверяем, что ConfigMap был
 создан: `kubectl get configmaps`
 
 ### Создание ReplicaSet
 
 Пример манифеста для ReplicaSet можно найти
-в [официальной документации](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/) :
+в [официальной документации](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/):
 
 ```yaml
 apiVersion: apps/v1
@@ -116,12 +116,12 @@ spec:
 
 Создаем ReplicaSet с помощью команды:
 
-`kubectl create -f frontend-replicaset-manifest.yaml`.
+`kubectl create -f frontend-replicaset-manifest.yaml`
 
 Проверяем создание
 ReplicaSet: `kubectl get rs`
 
-.![ReplicaSet](pics/1.png)
+![ReplicaSet](pics/1.png)
 
 ### Создание сервиса
 
@@ -150,9 +150,9 @@ spec:
 
 `kubectl create -f frontend-service.yaml`
 
-.Проверяем создание сервиса: `kubectl get services`
+Проверяем создание сервиса: `kubectl get services`
 
-.![Service](pics/2.png)
+![Service](pics/2.png)
 
 ### Генерация TLS
 
@@ -226,22 +226,23 @@ spec:
 
 `kubectl create -f frontend-ingress.yaml`
 
-.Проверяем создание
-Ingress: `kubectl get ingress`
+Проверяем создание Ingress: `kubectl get ingress`
 
-Запускаем туннель для Ingress: `minikube tunnel`.Открываем страницу: `https://frontend-lab3.siryoja`
-.![Window](pics/6.png)
-.![Window](pics/7.png)
+Запускаем туннель для Ingress: `minikube tunnel`
+
+Открываем страницу: `https://frontend-lab3.siryoja`
+![Window](pics/6.png)
+![Window](pics/7.png)
 
 ### Схема архитектуры
 
-.![Shema](pics/l3d.png)
+![Shema](pics/l3d.png)
 ---
 
 ### Заключение
 
 В данной лабораторной работе был создан и настроен локальный кластер Kubernetes с использованием Minikube. Основное
-внимание уделялось созданию и использованию **ConfigMap** , **Secrets** , **ReplicaSets** , **Services** , и **Ingress**
+внимание уделялось созданию и использованию **ConfigMap**, **Secrets**, **ReplicaSets**, **Services**, и **Ingress**
 для безопасного хранения данных и организации безопасного доступа к приложениям в Kubernetes.
 
 1. **ConfigMap**  был использован для хранения неконфиденциальных данных, таких как переменные окружения для приложения.
@@ -254,7 +255,7 @@ Ingress: `kubectl get ingress`
 4. **Ingress**  был настроен для управления внешним доступом и использования **TLS-сертификатов**  для защиты трафика
    между пользователем и сервисом.
    В процессе работы были созданы сертификаты с помощью OpenSSL, с использованием которых был настроен безопасный доступ
-   через **Ingress** .
+   через **Ingress**.
 
 ### Определения понятий
 
